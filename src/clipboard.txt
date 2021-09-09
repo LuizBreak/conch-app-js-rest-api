@@ -1,0 +1,21 @@
+  # conch-http-getalltransactions-function:
+  #   handler: src/getAllTransactions.handler
+  #   events:
+  #     - http:
+  #         path: /items/{timestamp}
+  #         method: get
+  #     - http:
+  #         path: /items
+  #         method: get
+  # conch-http-createtransactions-function:
+  #   handler: src/createTransactions.handler
+  #   events:
+  #     - http:
+  #         path: /items/{id}
+  #         method: DELETE 
+  #     - http:
+  #         path: /items 
+  #         method: PUT
+  #     - http:
+  #         path: /items 
+  #         method: POST
