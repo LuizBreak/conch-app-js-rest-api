@@ -12,10 +12,12 @@ const crypto = require("crypto");
 const generateUUID = () => crypto.randomBytes(16).toString("hex");
 
 
-const createTransactions = async (event, context) => {
+module.exports.createTransactions = async (event, context) => {
+
   var timestamp = new Date().getTime();
   let body;
   let statusCode = 200;
+  
   const headers = {
     "Content-Type": "application/json"
   };
@@ -96,6 +98,6 @@ const createTransactions = async (event, context) => {
   };
 };
 
-module.export = {
-    handler: createTransactions
-};
+// module.export = {
+//     handler: createTransactions
+// };

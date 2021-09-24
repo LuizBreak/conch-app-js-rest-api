@@ -1,11 +1,13 @@
 "use strict";
 
-module.exports.hello = async (event) => {
+module.exports.pulse = async (event) => {
+
+  var timestamp = new Date().getTime();
   return {
     statusCode: 200,
     body: JSON.stringify(
       {
-        message: "Go Serverless v2.0! Your function executed successfully! v1.1",
+        message: "Go Serverless! our API is alive! v1.0",
         input: event,
       },
       null,

@@ -9,10 +9,53 @@ provider:
   lambdaHashingVersion: '20201221'
   region: 'us-east-1'
 functions:
-  hello:
-    handler: src/handler.hello
+  pulse:
+    handler: src/pulse.pulse
     events:
       - http:
           path: /
-          method: get   
- 
+          method: get
+
+  list:
+    handler: src/todos/list.list
+    events:
+      - httpApi:
+          path: /todos
+          method: get
+
+  get:
+    handler: src/todos/get.get
+    events:
+      - httpApi:
+          path: /todos/{fromUser}
+          method: get
+
+  queryby:
+    handler: src/todos/queryby.queryby
+    events:
+      - httpApi:
+          path: /query/{fromUser} 
+          method: get
+
+  getalltransactions:
+    handler: src/transactions/getAllTransactions.getAllTransactions
+    events:
+      - httpApi:
+          path: /items/one/{fromUser}
+          method: get
+      - httpApi:
+          path: /items/all
+          method: get
+
+  createtransactions:
+    handler: src/transactions/createTransactions.createTransactions
+    events:
+      - httpApi:
+          path: /items/{id}
+          method: DELETE 
+      - httpApi:
+          path: /items 
+          method: PUT
+      - httpApi:
+          path: /items 
+          method: POST

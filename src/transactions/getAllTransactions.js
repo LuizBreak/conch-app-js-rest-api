@@ -7,7 +7,7 @@ const AWS = require("aws-sdk");
 const dynamo = new AWS.DynamoDB.DocumentClient();
 
 
-const getAllTransactions = async (event, context) => {
+module.exports.getAllTransactions = async (event, context) => {
   var timestamp = new Date().getTime();
   let body;
   let statusCode = 200;
@@ -17,17 +17,17 @@ const getAllTransactions = async (event, context) => {
 
   try {
     switch (event.routeKey) {
-      case "GET /items/{timestamp}":
+      case "GET /items/one/{fromUser}":
         body = await dynamo
           .get({
             TableName: "conch-transactions-DEV",
             Key: {
-              id: event.pathParameters.timestamp
+              "fromUser": event.pathParameters.fromUser
             }
           })
           .promise();
         break;
-      case "GET /items":
+      case "GET /items/all":
         body = await dynamo.scan({ TableName: "conch-transactions-DEV" }).promise();
         break;
       default:
@@ -47,6 +47,6 @@ const getAllTransactions = async (event, context) => {
   };
 };
 
-module.export = {
-    handler: getAllTransactions
-};
+// module.export = {
+//     handler: getAllTransactions
+// };
