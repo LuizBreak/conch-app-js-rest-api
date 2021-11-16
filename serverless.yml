@@ -59,3 +59,36 @@ functions:
       - httpApi:
           path: /items 
           method: POST
+
+  getallnominaentries:
+    handler: src/sersalud/getAllNominaEntries.getAllNominaEntries
+    events:
+      - httpApi:
+          path: /nomina/one/{timestamp}
+          method: get
+      - httpApi:
+          path: /nomina/all
+          method: get 
+
+  getallresources:
+    handler: src/sersalud/getAllResources.getAllResources
+    events:
+      - httpApi:
+          path: /resources/one/{timestamp}
+          method: get
+      - httpApi:
+          path: /resources/all
+          method: get
+
+  createnominaentry:
+    handler: src/sersalud/createNominaEntry.createNominaEntry
+    events:
+      - httpApi:
+          path: /entry/{id}
+          method: DELETE 
+      - httpApi:
+          path: /entries 
+          method: PUT
+      - httpApi:
+          path: /entries 
+          method: POST
