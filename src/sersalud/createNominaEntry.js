@@ -43,18 +43,25 @@ module.exports.createNominaEntry = async (event, context) => {
           .put({
             TableName: "sersalud-nomina-bkp-DEV",
             Item: {
-                timestamp: timestamp,
+                timestamp: requestJSON.timestamp,
                 nombre: requestJSON.nombre,
                 Localidad: requestJSON.Localidad,
                 personaCubierta: requestJSON.personaCubierta,
-                evidencia: requestJSON.type,
-                concepto: requestJSON.transactionDate,
-                fecha: requestJSON.transactionType,
-                cedula: requestJSON.userId
+                evidencia: requestJSON.evidencia,
+                concepto: requestJSON.concepto,
+                diasCobertura: requestJSON.diasCobertura,
+                mesCobertura: requestJSON.mesCobertura,
+                cedula: requestJSON.cedula,
+                supervisor: requestJSON.supervisor,
+                horaEntrada: requestJSON.horaEntrada,
+                horaSalida: requestJSON.horaSalida,
+                horaAlmuerzo: requestJSON.horaAlmuerzo,
+                montosNegociados: requestJSON.montosNegociados,
+                comentariosAdicionales: requestJSON.comentariosAdicionales
             }
           })
           .promise();
-        body = `Put entry ${requestJSON.timestamp}`;
+        body = `Put (updated) item ${requestJSON.timestamp}`;
         break;
       case "POST /entries":
         // requestJSON = JSON.parse(event.body);
@@ -62,18 +69,25 @@ module.exports.createNominaEntry = async (event, context) => {
           .put({
             TableName: "sersalud-nomina-bkp-DEV",
             Item: {
-              timestamp: timestamp,
-              nombre: requestJSON.nombre,
-              Localidad: requestJSON.Localidad,
-              personaCubierta: requestJSON.personaCubierta,
-              evidencia: requestJSON.type,
-              concepto: requestJSON.transactionDate,
-              fecha: requestJSON.transactionType,
-              cedula: requestJSON.userId
+                timestamp: requestJSON.timestamp,
+                nombre: requestJSON.nombre,
+                Localidad: requestJSON.Localidad,
+                personaCubierta: requestJSON.personaCubierta,
+                evidencia: requestJSON.evidencia,
+                concepto: requestJSON.concepto,
+                diasCobertura: requestJSON.diasCobertura,
+                mesCobertura: requestJSON.mesCobertura,
+                cedula: requestJSON.cedula,
+                supervisor: requestJSON.supervisor,
+                horaEntrada: requestJSON.horaEntrada,
+                horaSalida: requestJSON.horaSalida,
+                horaAlmuerzo: requestJSON.horaAlmuerzo,
+                montosNegociados: requestJSON.montosNegociados,
+                comentariosAdicionales: requestJSON.comentariosAdicionales
             }
           })
           .promise();
-        body = `Post item ${requestJSON.timestamp}`;
+        body = `Post (inserted) item ${requestJSON.timestamp}`;
         break;
       default:
         throw new Error(`Unsupported route: "${event.routeKey}"`);

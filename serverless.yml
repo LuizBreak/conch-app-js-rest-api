@@ -51,7 +51,7 @@ functions:
     handler: src/transactions/createTransactions.createTransactions
     events:
       - httpApi:
-          path: /items/{id}
+          path: /items/{timestamp}
           method: DELETE 
       - httpApi:
           path: /items 
@@ -84,7 +84,7 @@ functions:
     handler: src/sersalud/createNominaEntry.createNominaEntry
     events:
       - httpApi:
-          path: /entry/{id}
+          path: /entries/{timestamp}
           method: DELETE 
       - httpApi:
           path: /entries 
