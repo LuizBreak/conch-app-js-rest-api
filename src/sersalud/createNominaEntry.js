@@ -23,15 +23,20 @@ module.exports.createNominaEntry = async (event, context) => {
   };
 
   try {
-    let requestJSON = JSON.parse(event.body);
+    // let requestJSON = JSON.parse(event.body ?? '{}');
 
+    let requestJSON = {};
+    if(event.body) {
+      requestJSON = JSON.parse(event.body);
+    }
+    
     switch (event.routeKey) {
-      case "DELETE /entries/{id}":
+      case "DELETE /entries/{timestamp}":
         await dynamo
           .delete({
             TableName: "sersalud-nomina-bkp-DEV",
             Key: {
-              timestamp: event.pathParameters.timestamp
+              timestamp: Number(event.pathParameters.timestamp)
             }
           })
           .promise();

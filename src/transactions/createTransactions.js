@@ -23,8 +23,13 @@ module.exports.createTransactions = async (event, context) => {
   };
 
   try {
-    let requestJSON = JSON.parse(event.body);
+    // let requestJSON = JSON.parse(event.body ?? '{}');
 
+    let requestJSON = {};
+    if(event.body) {
+      requestJSON = JSON.parse(event.body);
+    }
+    
     switch (event.routeKey) {
       case "DELETE /items/{id}":
         await dynamo

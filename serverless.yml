@@ -51,7 +51,7 @@ functions:
     handler: src/transactions/createTransactions.createTransactions
     events:
       - httpApi:
-          path: /items/{timestamp}
+          path: /items/{id}
           method: DELETE 
       - httpApi:
           path: /items 
