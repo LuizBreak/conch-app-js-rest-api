@@ -12,7 +12,7 @@ const crypto = require("crypto");
 const generateUUID = () => crypto.randomBytes(16).toString("hex");
 
 
-module.exports.createNominaEntry = async (event, context) => {
+module.exports.createResourceEntry = async (event, context) => {
 
   var timestamp = new Date().getTime();
   let body;
@@ -30,48 +30,37 @@ module.exports.createNominaEntry = async (event, context) => {
     }
     
     switch (event.routeKey) {
-      case "DELETE /entries/{timestamp}":
+      case "DELETE /entries/{nombre}":
         await dynamo
           .delete({
-            TableName: "sersalud-nomina-bkp-DEV",
+            TableName: "sersalud-resources-DEV",
             Key: {
-              timestamp: Number(event.pathParameters.timestamp)
+              timestamp: Number(event.pathParameters.nombre)
             }
           })
           .promise();
-        body = `Deleted entry ${event.pathParameters.timestamp}`;
+        body = `Deleted entry ${event.pathParameters.nombre}`;
         break;
       case "PUT /entries":
         // let requestJSON = JSON.parse(event.body);
         await dynamo
           .put({
-            TableName: "sersalud-nomina-bkp-DEV",
+            TableName: "sersalud-resources-DEV",
             Item: {
                 timestamp: requestJSON.timestamp,
                 nombre: requestJSON.nombre,
-                Localidad: requestJSON.Localidad,
-                personaCubierta: requestJSON.personaCubierta,
-                evidencia: requestJSON.evidencia,
-                concepto: requestJSON.concepto,
-                diasCobertura: requestJSON.diasCobertura,
-                mesCobertura: requestJSON.mesCobertura,
                 cedula: requestJSON.cedula,
-                supervisor: requestJSON.supervisor,
-                horaEntrada: requestJSON.horaEntrada,
-                horaSalida: requestJSON.horaSalida,
-                horaAlmuerzo: requestJSON.horaAlmuerzo,
-                montosNegociados: requestJSON.montosNegociados,
-                comentariosAdicionales: requestJSON.comentariosAdicionales
+                cargo: requestJSON.cargo
             }
           })
           .promise();
-        body = `Put (updated) item ${requestJSON.timestamp}`;
+        body = `Put (updated) item ${requestJSON.nombre}`;
         break;
       case "POST /entries":
         // requestJSON = JSON.parse(event.body);
         await dynamo
           .put({
-            TableName: "sersalud-nomina-bkp-DEV",
+            TableName: "sersalud-resources-DEV",
             Item: {
                 timestamp: requestJSON.timestamp,
                 nombre: requestJSON.nombre,
@@ -91,7 +80,7 @@ module.exports.createNominaEntry = async (event, context) => {
             }
           })
           .promise();
-        body = `Post (inserted) item ${requestJSON.timestamp}`;
+        body = `Post (inserted) item ${requestJSON.nombre}`;
         break;
       default:
         throw new Error(`Unsupported route: "${event.routeKey}"`);

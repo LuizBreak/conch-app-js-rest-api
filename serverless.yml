@@ -2,6 +2,8 @@ service: conch-app-js-rest-api
 
 frameworkVersion: '2'
 
+# API Naming Conventions 
+# Article Reference: https://blog.stoplight.io/crud-api-design
 
 provider:
   name: aws
@@ -70,16 +72,6 @@ functions:
           path: /nomina/all
           method: get 
 
-  getallresources:
-    handler: src/sersalud/getAllResources.getAllResources
-    events:
-      - httpApi:
-          path: /resources/one/{timestamp}
-          method: get
-      - httpApi:
-          path: /resources/all
-          method: get
-
   createnominaentry:
     handler: src/sersalud/createNominaEntry.createNominaEntry
     events:
@@ -92,3 +84,33 @@ functions:
       - httpApi:
           path: /entries 
           method: POST
+
+  getallresources:
+    handler: src/sersalud/getAllResources.getAllResources
+    events:
+      - httpApi:
+          path: /resources/one/{timestamp}
+          method: get
+      - httpApi:
+          path: /resources/all
+          method: get
+
+  createresourceentry:
+    handler: src/sersalud/createResourceEntry.createResourceEntry
+    events:
+      - httpApi:
+          path: /resources/{nombre}
+          method: DELETE 
+      - httpApi:
+          path: /resources 
+          method: PUT
+      - httpApi:
+          path: /resources 
+          method: POST
+
+  bulkresourceentries:
+    handler: src/sersalud/bulkResourceEntries.bulkResourceEntries
+    events:
+      - httpApi:
+          path: /resources/bulk 
+          method: PUT
