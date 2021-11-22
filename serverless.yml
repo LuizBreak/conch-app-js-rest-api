@@ -114,3 +114,10 @@ functions:
       - httpApi:
           path: /resources/bulk 
           method: PUT
+
+  bulknominaentries:
+    handler: src/sersalud/bulkNominaEntries.bulkNominaEntries
+    events:
+      - httpApi:
+          path: /nomina/bulk
+          method: PUT
