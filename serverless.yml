@@ -121,3 +121,11 @@ functions:
       - httpApi:
           path: /nomina/bulk
           method: PUT
+
+  getallpuestos:
+    handler: src/sersalud/getAllPuestos.getAllPuestos
+    events:
+      - httpApi:
+          path: /puestos/all
+          method: get
+

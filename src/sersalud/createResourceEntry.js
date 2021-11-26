@@ -6,12 +6,6 @@ const AWS = require("aws-sdk");
 
 const dynamo = new AWS.DynamoDB.DocumentClient();
 
-// TODO: Investigate how to use it later
-const crypto = require("crypto");
-// Generate unique id with no external dependencies
-const generateUUID = () => crypto.randomBytes(16).toString("hex");
-
-
 module.exports.createResourceEntry = async (event, context) => {
 
   var timestamp = new Date().getTime();
@@ -49,8 +43,14 @@ module.exports.createResourceEntry = async (event, context) => {
             Item: {
                 timestamp: requestJSON.timestamp,
                 nombre: requestJSON.nombre,
+                apellido: requestJSON.apellido,
                 cedula: requestJSON.cedula,
-                cargo: requestJSON.cargo
+                cargo: requestJSON.cargo,
+                telefono: requestJSON.telefono,
+                correo: requestJSON.correo,
+                banco: requestJSON.banco,
+                tipoDeCuenta: requestJSON.tipoDeCuenta,
+                cuenta: requestJSON.routeKeycuenta
             }
           })
           .promise();
@@ -62,21 +62,16 @@ module.exports.createResourceEntry = async (event, context) => {
           .put({
             TableName: "sersalud-resources-DEV",
             Item: {
-                timestamp: requestJSON.timestamp,
+                timestamp: Date.now(),
                 nombre: requestJSON.nombre,
-                Localidad: requestJSON.Localidad,
-                personaCubierta: requestJSON.personaCubierta,
-                evidencia: requestJSON.evidencia,
-                concepto: requestJSON.concepto,
-                diasCobertura: requestJSON.diasCobertura,
-                mesCobertura: requestJSON.mesCobertura,
+                apellido: requestJSON.apellido,
                 cedula: requestJSON.cedula,
-                supervisor: requestJSON.supervisor,
-                horaEntrada: requestJSON.horaEntrada,
-                horaSalida: requestJSON.horaSalida,
-                horaAlmuerzo: requestJSON.horaAlmuerzo,
-                montosNegociados: requestJSON.montosNegociados,
-                comentariosAdicionales: requestJSON.comentariosAdicionales
+                cargo: requestJSON.cargo,
+                telefono: requestJSON.telefono,
+                correo: requestJSON.correo,
+                banco: requestJSON.banco,
+                tipoDeCuenta: requestJSON.tipoDeCuenta,
+                cuenta: requestJSON.routeKeycuenta
             }
           })
           .promise();
@@ -98,7 +93,3 @@ module.exports.createResourceEntry = async (event, context) => {
     headers
   };
 };
-
-// module.export = {
-//     handler: createTransactions
-// };

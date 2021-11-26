@@ -49,19 +49,20 @@ module.exports.createNominaEntry = async (event, context) => {
             Item: {
                 timestamp: requestJSON.timestamp,
                 nombre: requestJSON.nombre,
-                Localidad: requestJSON.Localidad,
-                personaCubierta: requestJSON.personaCubierta,
-                evidencia: requestJSON.evidencia,
-                concepto: requestJSON.concepto,
-                diasCobertura: requestJSON.diasCobertura,
-                mesCobertura: requestJSON.mesCobertura,
-                cedula: requestJSON.cedula,
-                supervisor: requestJSON.supervisor,
-                horaEntrada: requestJSON.horaEntrada,
-                horaSalida: requestJSON.horaSalida,
+                otrosPagos: requestJSON.otrosPagos,
                 horaAlmuerzo: requestJSON.horaAlmuerzo,
+                diasCobertura: requestJSON.diasCobertura,
+                horaSalida: requestJSON.horaSalida,
+                cargoDelSolicitante: requestJSON.cargoDelSolicitante,
+                concepto: requestJSON.concepto,
+                evidencia: requestJSON.evidencia,
                 montosNegociados: requestJSON.montosNegociados,
-                comentariosAdicionales: requestJSON.comentariosAdicionales
+                comentarios: requestJSON.comentarios,
+                supervisor: requestJSON.supervisor,
+                localidad: requestJSON.localidad,
+                horaEntrada: requestJSON.horaEntrada,
+                mesCobertura: requestJSON.mesCobertura,
+                cedula: requestJSON.cedula
             }
           })
           .promise();
@@ -73,7 +74,7 @@ module.exports.createNominaEntry = async (event, context) => {
           .put({
             TableName: "sersalud-nomina-bkp-DEV",
             Item: {
-                timestamp: requestJSON.timestamp,
+                timestamp: Date.now(),
                 nombre: requestJSON.nombre,
                 Localidad: requestJSON.Localidad,
                 personaCubierta: requestJSON.personaCubierta,
@@ -109,7 +110,3 @@ module.exports.createNominaEntry = async (event, context) => {
     headers
   };
 };
-
-// module.export = {
-//     handler: createTransactions
-// };
