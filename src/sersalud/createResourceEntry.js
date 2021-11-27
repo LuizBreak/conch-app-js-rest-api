@@ -24,7 +24,7 @@ module.exports.createResourceEntry = async (event, context) => {
     }
     
     switch (event.routeKey) {
-      case "DELETE /entries/{nombre}":
+      case "DELETE /resources/{nombre}":
         await dynamo
           .delete({
             TableName: "sersalud-resources-DEV",
@@ -35,7 +35,7 @@ module.exports.createResourceEntry = async (event, context) => {
           .promise();
         body = `Deleted entry ${event.pathParameters.nombre}`;
         break;
-      case "PUT /entries":
+      case "PUT /resources":
         // let requestJSON = JSON.parse(event.body);
         await dynamo
           .put({
@@ -50,13 +50,18 @@ module.exports.createResourceEntry = async (event, context) => {
                 correo: requestJSON.correo,
                 banco: requestJSON.banco,
                 tipoDeCuenta: requestJSON.tipoDeCuenta,
-                cuenta: requestJSON.routeKeycuenta
-            }
+                cuenta: requestJSON.routeKeycuenta,
+                metodoDePago: requestJSON.metodoDePago,
+                estado: requestJSON.estado,
+                direccion: requestJSON.direccion,
+                comentario: requestJSON.comentario,
+                fechaDeInicio: requestJSON.fechaDeInicio,
+                exequatur: requestJSON.exequatur            }
           })
           .promise();
         body = `Put (updated) item ${requestJSON.nombre}`;
         break;
-      case "POST /entries":
+      case "POST /resources":
         // requestJSON = JSON.parse(event.body);
         await dynamo
           .put({
@@ -71,7 +76,13 @@ module.exports.createResourceEntry = async (event, context) => {
                 correo: requestJSON.correo,
                 banco: requestJSON.banco,
                 tipoDeCuenta: requestJSON.tipoDeCuenta,
-                cuenta: requestJSON.routeKeycuenta
+                cuenta: requestJSON.routeKeycuenta,
+                metodoDePago: requestJSON.metodoDePago,
+                estado: requestJSON.estado,
+                direccion: requestJSON.direccion,
+                comentario: requestJSON.comentario,
+                fechaDeInicio: requestJSON.fechaDeInicio,
+                exequatur: requestJSON.exequatur
             }
           })
           .promise();
