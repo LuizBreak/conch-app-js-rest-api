@@ -69,12 +69,15 @@ module.exports.createNominaEntry = async (event, context) => {
         body = `Put (updated) item ${requestJSON.timestamp}`;
         break;
       case "POST /entries":
+        if (!requestJSON.hasOwnProperty('timestamp')) {
+          requestJSON.timestamp = Date.now();
+        }
         // requestJSON = JSON.parse(event.body);
         await dynamo
           .put({
             TableName: "sersalud-nomina-bkp-DEV",
             Item: {
-                timestamp: Date.now(),
+                timestamp: requestJSON.timestamp,
                 nombre: requestJSON.nombre,
                 Localidad: requestJSON.Localidad,
                 personaCubierta: requestJSON.personaCubierta,

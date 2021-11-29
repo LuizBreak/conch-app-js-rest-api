@@ -1,0 +1,59 @@
+{
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "fromUser": "source-user",
+      "toUser": "test-user",
+      "timestamp": 1633651606459,
+      "transactionDate": "2021-10-07 20:06:46.459",
+      "transactionType": "Payment",
+      "userId": 1,
+      "amount": 16.16,
+      "longitude": 0,
+      "locationName": "Moema vs Ibirapuera",
+      "description": "long trip to Moema",
+      "latitude": 0
+    }
+  }
+
+  {
+    "version": "2.0",
+    "routeKey": "PUT /resources/bulk ",
+    "rawPath": "/resources/bulk ",
+    "rawQueryString": "",
+    "headers": {
+      "accept": "/",
+      "accept-encoding": "gzip, deflate, br",
+      "content-length": "0",
+      "host": "u3d98p841a.execute-api.us-east-1.amazonaws.com",
+      "postman-token": "6abe7248-68b6-43f3-a4a1-bb0cdb270ba9",
+      "user-agent": "PostmanRuntime/7.28.4",
+      "x-amzn-trace-id": "Root=1-6195a2f1-134535273aa15b8f1ef93481",
+      "x-forwarded-for": "142.113.241.222",
+      "x-forwarded-port": "443",
+      "x-forwarded-proto": "https"
+    },
+    "requestContext": {
+      "accountId": "907823072924",
+      "apiId": "u3d98p841a",
+      "domainName": "u3d98p841a.execute-api.us-east-1.amazonaws.com",
+      "domainPrefix": "u3d98p841a",
+      "http": {
+        "method": "PUT",
+        "path": "/resources/bulk",
+        "protocol": "HTTP/1.1",
+        "sourceIp": "142.113.241.222",
+        "userAgent": "PostmanRuntime/7.28.4"
+      },
+      "requestId": "I-ZlxgZ6oAMEPTw=",
+      "routeKey": "PUT /resources/bulk",
+      "stage": "$default",
+      "time": "18/Nov/2021:00:48:49 +0000",
+      "timeEpoch": 1637196529594
+    },
+    "pathParameters": {
+      "timestamp": "3433651606459"
+    },
+    "isBase64Encoded": false
+  }

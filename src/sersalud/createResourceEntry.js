@@ -50,7 +50,7 @@ module.exports.createResourceEntry = async (event, context) => {
                 correo: requestJSON.correo,
                 banco: requestJSON.banco,
                 tipoDeCuenta: requestJSON.tipoDeCuenta,
-                cuenta: requestJSON.routeKeycuenta,
+                cuenta: requestJSON.cuenta,
                 metodoDePago: requestJSON.metodoDePago,
                 estado: requestJSON.estado,
                 direccion: requestJSON.direccion,
