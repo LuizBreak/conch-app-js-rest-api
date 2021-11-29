@@ -62,12 +62,16 @@ module.exports.createResourceEntry = async (event, context) => {
         body = `Put (updated) item ${requestJSON.nombre}`;
         break;
       case "POST /resources":
+        if (!requestJSON.hasOwnProperty('timestamp')) {
+          requestJSON.timestamp = Date.now();
+        }
+
         // requestJSON = JSON.parse(event.body);
         await dynamo
           .put({
             TableName: "sersalud-resources-DEV",
             Item: {
-                timestamp: Date.now(),
+                timestamp: requestJSON.timestamp ,
                 nombre: requestJSON.nombre,
                 apellido: requestJSON.apellido,
                 cedula: requestJSON.cedula,
