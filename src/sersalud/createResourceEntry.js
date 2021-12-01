@@ -24,24 +24,28 @@ module.exports.createResourceEntry = async (event, context) => {
     }
     
     switch (event.routeKey) {
-      case "DELETE /resources/{nombre}":
+      case "DELETE /resources/{timestamp}":
         await dynamo
           .delete({
             TableName: "sersalud-resources-DEV",
             Key: {
-              timestamp: Number(event.pathParameters.nombre)
+              timestamp: Number(event.pathParameters.timestamp)
             }
           })
           .promise();
-        body = `Deleted entry ${event.pathParameters.nombre}`;
+        body = `Deleted entry ${event.pathParameters.timestamp}`;
         break;
       case "PUT /resources":
-        // let requestJSON = JSON.parse(event.body);
+        if (!requestJSON.hasOwnProperty('timestamp') || 
+             requestJSON.timestamp == 0 || 
+             requestJSON.timestamp == "")   {
+          requestJSON.timestamp = Date.now();
+        }
         await dynamo
           .put({
             TableName: "sersalud-resources-DEV",
             Item: {
-                timestamp: requestJSON.timestamp,
+                timestamp: Number(requestJSON.timestamp),
                 nombre: requestJSON.nombre,
                 apellido: requestJSON.apellido,
                 cedula: requestJSON.cedula,
@@ -51,7 +55,7 @@ module.exports.createResourceEntry = async (event, context) => {
                 banco: requestJSON.banco,
                 tipoDeCuenta: requestJSON.tipoDeCuenta,
                 cuenta: requestJSON.cuenta,
-                metodoDePago: requestJSON.metodoDePago,
+                tipoDePago: requestJSON.tipoDePago,
                 estado: requestJSON.estado,
                 direccion: requestJSON.direccion,
                 comentario: requestJSON.comentario,
@@ -62,16 +66,12 @@ module.exports.createResourceEntry = async (event, context) => {
         body = `Put (updated) item ${requestJSON.nombre}`;
         break;
       case "POST /resources":
-        if (!requestJSON.hasOwnProperty('timestamp')) {
-          requestJSON.timestamp = Date.now();
-        }
-
         // requestJSON = JSON.parse(event.body);
         await dynamo
           .put({
             TableName: "sersalud-resources-DEV",
             Item: {
-                timestamp: requestJSON.timestamp ,
+                timestamp: Date.now(),
                 nombre: requestJSON.nombre,
                 apellido: requestJSON.apellido,
                 cedula: requestJSON.cedula,
@@ -80,8 +80,8 @@ module.exports.createResourceEntry = async (event, context) => {
                 correo: requestJSON.correo,
                 banco: requestJSON.banco,
                 tipoDeCuenta: requestJSON.tipoDeCuenta,
-                cuenta: requestJSON.routeKeycuenta,
-                metodoDePago: requestJSON.metodoDePago,
+                cuenta: requestJSON.cuenta,
+                tipoDePago: requestJSON.tipoDePago,
                 estado: requestJSON.estado,
                 direccion: requestJSON.direccion,
                 comentario: requestJSON.comentario,

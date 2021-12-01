@@ -99,7 +99,7 @@ functions:
     handler: src/sersalud/createResourceEntry.createResourceEntry
     events:
       - httpApi:
-          path: /resources/{nombre}
+          path: /resources/{timestamp}
           method: DELETE 
       - httpApi:
           path: /resources 

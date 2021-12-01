@@ -1,21 +1,19 @@
-  # conch-http-getalltransactions-function:
-  #   handler: src/getAllTransactions.handler
-  #   events:
-  #     - http:
-  #         path: /items/{timestamp}
-  #         method: get
-  #     - http:
-  #         path: /items
-  #         method: get
-  # conch-http-createtransactions-function:
-  #   handler: src/createTransactions.handler
-  #   events:
-  #     - http:
-  #         path: /items/{id}
-  #         method: DELETE 
-  #     - http:
-  #         path: /items 
-  #         method: PUT
-  #     - http:
-  #         path: /items 
-  #         method: POST
+{
+ "timestamp": 3433651606459,
+ "nombre": "ALBA IRIS FLORENTINO",
+ "metodoDePago": "TRANSFERENCIA BANCARIA",
+ "TIPO_SERVICIO_PERSONAL": "ENFERMERA",
+ "tipoDeCuenta": "CUENTA DE AHORRO DOP",
+ "estado": "TRUE",
+ "direccion": "0",
+ "cargo": "ENFERMERA BKP",
+ "comentario": "0",
+ "correo": "0",
+ "fechaDeInicio": "44504",
+ "exequatur": "0",
+ "telefono": "8099750067",
+ "cedula": "40229183500",
+ "banco": "BANRESERVAS",
+ "TIPO_PERSONAL_EXTERNO": "PERSONAL BACKUP",
+ "cuenta": "9601833384"
+}

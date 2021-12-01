@@ -42,24 +42,28 @@ module.exports.createNominaEntry = async (event, context) => {
         body = `Deleted entry ${event.pathParameters.timestamp}`;
         break;
       case "PUT /entries":
-        // let requestJSON = JSON.parse(event.body);
+        if (!requestJSON.hasOwnProperty('timestamp') || 
+            requestJSON.timestamp == 0 || 
+            requestJSON.timestamp == "")   {
+                requestJSON.timestamp = Date.now();
+        }
         await dynamo
           .put({
             TableName: "sersalud-nomina-bkp-DEV",
             Item: {
-                timestamp: requestJSON.timestamp,
+                timestamp: Number(requestJSON.timestamp),
                 nombre: requestJSON.nombre,
                 otrosPagos: requestJSON.otrosPagos,
                 horaAlmuerzo: requestJSON.horaAlmuerzo,
                 diasCobertura: requestJSON.diasCobertura,
                 horaSalida: requestJSON.horaSalida,
-                cargoDelSolicitante: requestJSON.cargoDelSolicitante,
                 concepto: requestJSON.concepto,
                 evidencia: requestJSON.evidencia,
                 montosNegociados: requestJSON.montosNegociados,
                 comentarios: requestJSON.comentarios,
                 supervisor: requestJSON.supervisor,
                 localidad: requestJSON.localidad,
+                personaCubierta: requestJSON.personaCubierta,
                 horaEntrada: requestJSON.horaEntrada,
                 mesCobertura: requestJSON.mesCobertura,
                 cedula: requestJSON.cedula
@@ -69,29 +73,28 @@ module.exports.createNominaEntry = async (event, context) => {
         body = `Put (updated) item ${requestJSON.timestamp}`;
         break;
       case "POST /entries":
-        if (!requestJSON.hasOwnProperty('timestamp')) {
-          requestJSON.timestamp = Date.now();
-        }
+
         // requestJSON = JSON.parse(event.body);
         await dynamo
           .put({
             TableName: "sersalud-nomina-bkp-DEV",
             Item: {
-                timestamp: requestJSON.timestamp,
+                timestamp: Date.now(),
                 nombre: requestJSON.nombre,
-                Localidad: requestJSON.Localidad,
-                personaCubierta: requestJSON.personaCubierta,
-                evidencia: requestJSON.evidencia,
-                concepto: requestJSON.concepto,
-                diasCobertura: requestJSON.diasCobertura,
-                mesCobertura: requestJSON.mesCobertura,
-                cedula: requestJSON.cedula,
-                supervisor: requestJSON.supervisor,
-                horaEntrada: requestJSON.horaEntrada,
-                horaSalida: requestJSON.horaSalida,
+                otrosPagos: requestJSON.otrosPagos,
                 horaAlmuerzo: requestJSON.horaAlmuerzo,
+                diasCobertura: requestJSON.diasCobertura,
+                horaSalida: requestJSON.horaSalida,
+                concepto: requestJSON.concepto,
+                evidencia: requestJSON.evidencia,
                 montosNegociados: requestJSON.montosNegociados,
-                comentariosAdicionales: requestJSON.comentariosAdicionales
+                comentarios: requestJSON.comentarios,
+                supervisor: requestJSON.supervisor,
+                localidad: requestJSON.localidad,
+                personaCubierta: requestJSON.personaCubierta,
+                horaEntrada: requestJSON.horaEntrada,
+                mesCobertura: requestJSON.mesCobertura,
+                cedula: requestJSON.cedula
             }
           })
           .promise();
