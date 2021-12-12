@@ -1,0 +1,61 @@
+{
+    "Items":[
+       {
+          "puesto":"ENFERMERA BKP",
+          "active":"true",
+          "timestamp":4
+       },
+       {
+          "puesto":"MEDICO FAMILIAR",
+          "active":"true",
+          "timestamp":8
+       },
+       {
+          "puesto":"NUTRICIONISTA",
+          "active":"true",
+          "timestamp":10
+       },
+       {
+          "puesto":"MEDICO FAMILIAR BKP",
+          "active":"true",
+          "timestamp":9
+       },
+       {
+          "puesto":"MEDICO BKP",
+          "active":"true",
+          "timestamp":2
+       },
+       {
+          "puesto":"SUPERVISOR",
+          "active":"true",
+          "timestamp":7
+       },
+       {
+          "puesto":"ENFERMERA",
+          "active":"true",
+          "timestamp":3
+       },
+       {
+          "puesto":"PSICOLOGO",
+          "active":"true",
+          "timestamp":11
+       },
+       {
+          "puesto":"ENFERMERO BKP",
+          "active":"true",
+          "timestamp":6
+       },
+       {
+          "active":"true",
+          "puesto":"MEDICO",
+          "timestamp":1
+       },
+       {
+          "puesto":"ENFERMERO",
+          "active":"true",
+          "timestamp":5
+       }
+    ],
+    "Count":11,
+    "ScannedCount":11
+ }

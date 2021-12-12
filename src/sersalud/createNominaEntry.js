@@ -28,7 +28,7 @@ module.exports.createNominaEntry = async (event, context) => {
     if(event.body) {
       requestJSON = JSON.parse(event.body);
     }
-    
+
     switch (event.routeKey) {
       case "DELETE /entries/{timestamp}":
         await dynamo

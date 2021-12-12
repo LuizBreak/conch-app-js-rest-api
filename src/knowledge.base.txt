@@ -1,0 +1,19 @@
+Article Reference: https://dynobase.dev/dynamodb-cli-query-examples/#list-tables
+
+SerSalud Tables:
+
+sersalud-nomina-bkp-DEV
+sersalud-puestos-DEV
+sersalud-resources-DEV
+
+aws dynamodb describe-table --table-name conch-transactions-DEV
+
+aws dynamodb batch-write-item --request-times file ://./myDataSet.json
+
+aws dynamodb scan --table-name sersalud-puestos-DEV \
+--return-consumed-capacity "TOTAL"
+
+aws dynamodb query --table-name sersalud-puestos-DEV \
+--key-condition-expression "puesto = :t" \
+--expression-attribute-values '{":t":{"S":"SUPERVISOR"}}' \
+--return-consumed-capacity "TOTAL"

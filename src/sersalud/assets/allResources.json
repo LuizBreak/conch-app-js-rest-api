@@ -1,0 +1,57 @@
+{
+    "Items":[
+       {
+          "nombre":"Jose1.54",
+          "timestamp":1638380579891,
+          "tipoDeCuenta":"corriente",
+          "direccion":"Ave. Nuñez de Caceres, 366, Torre Corporativo NC",
+          "cargo":"MEDICO FAMILIAR BKP",
+          "comentario":"BABA",
+          "correo":"jperez@hotmail.com",
+          "apellido":"perez asencio",
+          "fechaDeInicio":"2021-12-06",
+          "exequatur":"1113",
+          "telefono":"8295052034",
+          "tipoDePago":"CHEQUE",
+          "cedula":"10212852566",
+          "banco":"SCOTIABANK",
+          "cuenta":"4577"
+       },
+       {
+          "nombre":"sebastian",
+          "timestamp":1638982091941,
+          "tipoDeCuenta":"ahorro",
+          "direccion":"Calle paseo de los profesores #14",
+          "cargo":"SUPERVISOR",
+          "comentario":"REGISTRO PARA EL PUESTO DE SUPERVISOR",
+          "correo":"sarias@hotmail.com",
+          "apellido":"arias",
+          "fechaDeInicio":"2021-12-10",
+          "exequatur":"n/a",
+          "telefono":"8294181555",
+          "tipoDePago":"TRANSFERENCIA BANCARIA",
+          "cedula":"00109845674",
+          "banco":"BANCO POPULAR",
+          "cuenta":"6689"
+       },
+       {
+          "nombre":"donald",
+          "timestamp":1638493286455,
+          "tipoDeCuenta":"ahorro",
+          "direccion":"660A St Clarens Ave.",
+          "cargo":"ENFERMERO BKP",
+          "comentario":"SEIS ESTRELLAS",
+          "correo":"jperez@hotmail.com",
+          "apellido":"duck",
+          "fechaDeInicio":"2021-12-02",
+          "exequatur":"1113",
+          "telefono":"6475052034",
+          "tipoDePago":"PINPESO",
+          "cedula":"40212852566",
+          "banco":"SCOTIABANK",
+          "cuenta":"4577"
+       }
+    ],
+    "Count":3,
+    "ScannedCount":3
+ }

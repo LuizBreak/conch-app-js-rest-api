@@ -22,7 +22,7 @@ module.exports.createResourceEntry = async (event, context) => {
     if(event.body) {
       requestJSON = JSON.parse(event.body);
     }
-    
+
     switch (event.routeKey) {
       case "DELETE /resources/{timestamp}":
         await dynamo
@@ -60,7 +60,8 @@ module.exports.createResourceEntry = async (event, context) => {
                 direccion: requestJSON.direccion,
                 comentario: requestJSON.comentario,
                 fechaDeInicio: requestJSON.fechaDeInicio,
-                exequatur: requestJSON.exequatur            }
+                exequatur: requestJSON.exequatur            
+              }
           })
           .promise();
         body = `Put (updated) item ${requestJSON.nombre}`;
